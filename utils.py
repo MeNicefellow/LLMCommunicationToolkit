@@ -10,14 +10,14 @@ class llm_chatter:
         self.headers = {
             "Content-Type": "application/json"
         }
-    def communicate(self,prompt,greedy=False,reset=False,max_tokens=2048):
+    def communicate(self,prompt,greedy=False,reset=False,max_tokens=2048,template="Llama-v3"):
         if reset:
             self.msg_history = []
         self.msg_history.append({"role": "user", "content": prompt})
         data = {
             "mode": "instruct",
             "max_tokens": max_tokens,
-            "instruction_template":"Llama-v3",
+            "instruction_template":template,
                 "messages": self.msg_history
         }
         if greedy:
